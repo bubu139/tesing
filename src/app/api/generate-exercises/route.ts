@@ -1,6 +1,9 @@
 import {NextRequest, NextResponse} from 'next/server';
 import {generateExercises, GenerateExercisesInputSchema} from '@/ai/flows/generate-exercises-flow';
-import {runFlow} from 'genkit';
+import { generateExercises } from '@/ai/flows/generate-exercises-flow';
+import { runFlow } from 'genkit';
+
+const output = await runFlow(generateExercises, validation.data);
 
 export async function POST(req: NextRequest) {
   try {
