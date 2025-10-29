@@ -1,4 +1,3 @@
-'use server';
 /**
  * @fileOverview A flow that generates exercises for a given topic.
  */
