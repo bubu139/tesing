@@ -5,7 +5,6 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'zod';
-import {defineFlow} from 'genkit';
 
 const SYSTEM_INSTRUCTION = `Bạn là một AI gia sư toán học THPT lớp 12 Việt Nam, chuyên hướng dẫn học sinh TỰ HỌC và PHÁT TRIỂN TƯ DUY.
   
@@ -170,7 +169,7 @@ export const ChatOutputSchema = z.object({
 });
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
-export const chat = defineFlow(
+export const chat = ai.defineFlow(
   {
     name: 'chat',
     inputSchema: ChatInputSchema,
