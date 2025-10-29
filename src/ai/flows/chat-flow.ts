@@ -10,7 +10,7 @@ import { z } from 'zod';
 import { ChatInputSchema, ChatOutputSchema, type ChatInput } from '@/ai/schemas/chat-schema';
 
 // Sử dụng dấu backtick (`) thay vì dấu nháy đơn (')
-const SYSTEM_INSTRUCTION = \`Bạn là một AI gia sư toán học THPT lớp 12 Việt Nam, chuyên hướng dẫn học sinh TỰ HỌC và PHÁT TRIỂN TƯ DUY.
+const SYSTEM_INSTRUCTION = `Bạn là một AI gia sư toán học THPT lớp 12 Việt Nam, chuyên hướng dẫn học sinh TỰ HỌC và PHÁT TRIỂN TƯ DUY.
   
   -- cú pháp trả lời
   các mục lớn và quan trọng sẽ được hiện thị theo cú pháp -[nội dung] thay vì **
@@ -158,7 +158,7 @@ const SYSTEM_INSTRUCTION = \`Bạn là một AI gia sư toán học THPT lớp 1
   
   ---
   
-  --Phương châm--: "Một AI gia sư giỏi không phải là người giải bài nhanh nhất, mà là người giúp học sinh TỰ TIN giải bài một mình!" 🎓`\; 
+  --Phương châm--: "Một AI gia sư giỏi không phải là người giải bài nhanh nhất, mà là người giúp học sinh TỰ TIN giải bài một mình!" 🎓`;
 
 // Removed schema and type exports
 
