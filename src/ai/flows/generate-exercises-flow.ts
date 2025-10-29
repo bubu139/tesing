@@ -16,28 +16,22 @@ export const GenerateExercisesOutputSchema = z.object({
 });
 export type GenerateExercisesOutput = z.infer<typeof GenerateExercisesOutputSchema>;
 
-const generateExercisesPrompt = ai.definePrompt({
-    name: 'generateExercisesPrompt',
-    input: { schema: GenerateExercisesInputSchema },
-    output: { schema: GenerateExercisesOutputSchema },
-    prompt: `Bạn là một AI tạo bài tập toán học. Hãy tạo 3 bài tập tự luận (kèm đáp án chi tiết) về chủ đề sau. Sử dụng công thức LaTeX.
+export const generateExercises = ai.defineFlow(
+  {
+    name: 'generateExercises',
+    inputSchema: GenerateExercisesInputSchema,
+    outputSchema: GenerateExercisesOutputSchema,
+  },
+  async (input: GenerateExercisesInput) => {
+    const { output } = await ai.generate({
+      prompt: `Bạn là một AI tạo bài tập toán học. Hãy tạo 3 bài tập tự luận (kèm đáp án chi tiết) về chủ đề sau. Sử dụng công thức LaTeX.
 
-Chủ đề: {{{topic}}}
-`,
-});
+Chủ đề: ${input.topic}`,
+      output: {
+        schema: GenerateExercisesOutputSchema,
+      },
+    });
 
-const generateExercisesFlow = ai.defineFlow(
-    {
-        name: 'generateExercisesFlow',
-        inputSchema: GenerateExercisesInputSchema,
-        outputSchema: GenerateExercisesOutputSchema,
-    },
-    async (input) => {
-        const { output } = await generateExercisesPrompt(input);
-        return output!;
-    }
+    return output!;
+  }
 );
-
-export async function generateExercises(input: GenerateExercisesInput): Promise<GenerateExercisesOutput> {
-    return generateExercisesFlow(input);
-}
