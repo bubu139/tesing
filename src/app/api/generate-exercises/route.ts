@@ -1,5 +1,4 @@
 import {NextRequest, NextResponse} from 'next/server';
-import {generateExercises, GenerateExercisesInputSchema} from '@/ai/flows/generate-exercises-flow';
 import { generateExercises } from '@/ai/flows/generate-exercises-flow';
 import { runFlow } from 'genkit';
 
